@@ -1,0 +1,229 @@
+RECAP: 
+
+Web Application has multiple web pages
+
+Every page created using HTML + CSS + JS
+
+<html>
+    <thead>
+        <!---All the non-visible things-->
+    <thead>
+
+    <body>
+        <!---All the visible things--->
+        <h1> id='main_heading'/>HTML Elements</>
+        <p>Hello World!</p>
+        <p>I start learning automation testing!</p>
+        </div>
+        <div>
+            <button>Register</button>
+            <button>Sign in</button>
+            </div>
+    </body>
+</html>
+
+<html>
+
+WEB ELEMENT : tag
+<tag>VISIBLE TEXT</tag>
+<tag att="value">VISIBLE TEXT</tag
+
+#id_value
+.class_value
+
+SELECTORS | USING CLASS
+
+class="undefined dropdown is hoverable"
+
+Select all the elements which has class equals all the values
+.undefined
+.dropdown
+.ishoverable
+
+Select all the elements which has class equals all the values
+[class="undefined dropdown is-hoverable"]
+
+Select all the div elements which has class equals all the values
+div[class="undefined dropdown is-hoverable"]
+
+<p class="undefined dropdown is-hoverable">Hello</p>
+<div class="undefined dropdown is-hoverable">Hello</div>
+
+
+
+
+SELECTORS | VISIBLE TEXT
+
+<h1 id="main_heading">Html Elements</>
+
+
+
+SELECTORS | USING OTHER ATTRIBUTES (not id or class)
+
+[aria-current="page"]
+
+
+01-07-2024 Cypress Selectors
+
+RECAP:
+
+Web Application: has multiple web pages 
+Every page created using HTML+CSS+JS 
+
+<html> 
+    <head>
+        <!---All the non-visible things--->
+    </head>
+
+    <body>
+        <!---All the visible things--->
+        <div>
+            <h1 id="main_heading">Html Elements</>
+            <p>Hello World!</p>
+            <p>I start learning automation testing!</p>
+        </div>
+        <div>
+            <button>Register</button>
+            <button>Sign in</button>
+        </div>
+    </body>
+</html>
+
+
+WEB ELEMENT: tag 
+<tag>VISIBLE TEXT</tag>
+<tag att="value">VISIBLE TEXT</tag>
+
+#id_value
+.class_value
+
+
+SELECTORS: USING CLASS 
+
+class="undefined dropdown is-hoverable"
+
+Select all the elements which has a class equals a value
+.undefined 
+.dropdown
+.is-hoverable
+
+Select all the elements which has class equals all the values
+[class="undefined dropdown is-hoverable"]
+
+Select all the div elements which has class equals all the values
+div[class="undefined dropdown is-hoverable"]
+
+
+<p class="undefined dropdown is-hoverable">Hello</p>
+<div class="undefined dropdown is-hoverable">Hello</div>
+
+
+TEST CASE:
+Go to https://techglobal-training.com/frontend
+Validate there is 20 cards displayed
+
+<div class="Card_card__-SwHU card"></div>
+<div class="Card_card__-SwHU card"></div>
+<div class="Card_card__-SwHU card"></div>
+
+cy.get('.Card_card__-SwHU')
+cy.get('.card')
+
+cy.get('[class="Card_card__-SwHU card"]')
+cy.get('div[class="Card_card__-SwHU card"]')
+
+
+SELECTORS | VISIBLE TEXT 
+It can be useful when the visible text of the element is unique or it is the first 
+element you would like to interact with.
+
+NOTE: Is not preferred due to language (English)
+
+<h1 id="main_heading">Html Elements</>
+<h1">Html Elements</>
+
+cy.get('Html Elements') // yields the first element only
+
+
+
+SELECTORS | USING OTHER ATTRIBUTES (not id or class)
+[attribute]
+[attribute="value"]
+
+tag[attribute]
+tag[attribute="value"]
+
+
+<div id="container">
+    <h1 id="buttons">Buttons</>
+    <p id="para" class="p_text">Hello</p>
+    <button class="Button_c_button__TmkRS is-inline undefined" id="register_button" draggable="false">Register</button>
+    <button class="Button_c_button__TmkRS is-inline undefined" id="signin_button" draggable="false">Sign in</button>
+</div>
+
+cy.get('[id]') // locate all the elements that have id attribute -> 5
+cy.get('[id="para"]') // locate all the elements that have id attribute equals "para" -> 1
+
+
+cy.get('button[id]') // locate all the elements that are the buttons and have the id attribute -> 2
+cy.get('button[id="signin_button"]') // locate all the elements that are the buttons and have the id attribute equals "signin_button" -> 1
+
+
+cy.get('[class]') -> 3
+cy.get('p[class]') -> 1
+
+cy.get('button[class="Button_c_button__TmkRS is-inline undefined"]') -> 2
+
+NOTE: Usually, we do not use attribute selector with ID and CLASS attributes because they are used with "#" and "."
+#id_value
+.class_value 
+
+<p data-qa="abc" aria-label="Hello">Good morning</p>
+
+[data-qa="abc"]
+[aria-label="Hello"]
+
+p[data-qa="abc"]
+p[aria-label="Hello"]
+
+
+[data-qa="abc"] vs p[data-qa="abc"]
+
+USING, attribute contains, starts-with and ends-with approach
+
+<button class="wt-btn wt-btn--small wt-btn--transparent wt-mr-xs-1 inline-overlay-trigger signin-header-action select-signin header-button">Sign in</button>
+
+button[class="wt-btn wt-btn--small wt-btn--transparent wt-mr-xs-1 inline-overlay-trigger signin-header-action select-signin header-button"] // this is so long
+
+
+contains    -> *
+starts-with -> ^
+ends-with   -> $
+
+button[class*="select-signin"]
+button[class*="signin-header-action"]
+
+button[class^="wt-btn wt-btn--small"]
+button[class^="wt-btn wt-btn--small wt-btn--transparent"]
+
+button[class$="select-signin header-button"]
+
+
+MORE MOCHA HOOKS (before or after actions)
+
+before()
+after()
+beforeEach()
+afterEach()
+it1()
+it2()
+
+EXECUTION IS AS BELOW
+before()
+beforeEach()
+it1()
+afterEach()
+beforeEach()
+it2()
+afterEach()
+after()

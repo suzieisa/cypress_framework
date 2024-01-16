@@ -1,0 +1,36 @@
+RECAP:
+
+CSS SELECTORS 
+ID
+TAG
+CLASS 
+ATTRIBUTES (*, ^, $)
+PARENT-CHILD 
+
+Cypress Selectors
+cy.get()
+cy.contains()
+
+Working with CYPRESS Selectors for siblings:
+cy.get(selector).first() -> it selects the first sibling of many
+cy.get(selector).last() -> it selects the last sibling of many
+cy.get(selector).eq(index) -> it selects the indexth sibling of many (index starts from zero)
+cy.get(selector).prev() -> it selects the previous sibling of selected sibling
+
+Working with Cypress Selectors for parent -child:
+cy.get("parentElement").children() // direct child
+cy.get(parentElement).find() // descendant child
+
+CSS Parent-child(direct child or descandant)
+cy.get("parentElement > childElement") // direct child
+cy.get("parentElement childElement") // descendant child
+
+ALIASING (CAN USE WHEN LOCATOR IS TOO LONG AND CAN RENAME)
+<p class ="app-content-text-paragraph-5">Hello</p>
+
+cy.get(".app-content-text-paragraph-5").as("main-text") // RENAMING .app-content... to main-text
+cy.get("@main-text").should("be.visible").and("have.text, "Hello") // this is how you use an alias by naming it another name
+
+XPATH vs CSS
+-XPATH can move from child to parent but CSS cannot
+-CSS is faster than XPATH

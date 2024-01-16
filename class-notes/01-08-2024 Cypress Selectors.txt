@@ -1,0 +1,59 @@
+RECAP:
+Selectors or Locators: Unique identifiers to interact with or verify web elements. 
+
+cy.get(Selector) // find the element in a unique way 
+
+Type of CSS Selectors
+ID : fastest most reliable way to identify an element used with # (#id_value)
+CLASS : it is not always unique but commonly used for elements (.class_value)
+tag : not recommended, it returns multiple elements most of the time. Can be useful for h1, image, a
+
+Attributes: very common to use after ID
+[data-qa] select all the elements which have attribute called data-qa
+a[data-qa] // select all the elements which are links and have attribute called data qa
+a[data-qa="value"] // select all the lements which are links and have attribute called data-qa and data- qa
+
+
+DYNAMIC Attributes with Dynamic elements
+These are elements having dynamic attributes which change with each browser section
+You can rely on these attributes even though it is id or any other attribute
+
+SOLUTION: Attributes is dynamic (it changes) but some parts are static (doesnt change)
+
+
+tag[attribute="value"] -> equals
+tag[attribute*="value"] -> contains
+tag[attribute^="value"] -> starts-with
+tag[attribute$="value"] -> ends-with
+
+If the attributes are completely dynamic, you cannot use *, ^, $
+One option could be using visible texts as below but not best option
+
+SOLUTION: LOCATE STABLE PARENT AND MOVE TO CHILD
+
+direct child parentTag > childTag
+descendant child parentTag child tag (space in between)
+
+<div id="container"> 
+    <span id="text-holder">
+        <p id="sdhf764873">Hello World</>
+    </span>
+</div>
+
+#text-holder > p // select the element which has id equals text holder and move to its direct 
+#container p (NOT FOUND)
+
+WHEN TO MOVE FROM PARENT ELEMENT TO CHILD?
+1. you could not locate the element you would like to with any attribute, tags, text
+2. Now you can look for the first parent and try to find it in a stable way
+    If you could locate the first parent, then use it to move to the child element
+3. If the first parent cannot be located as well then move up to the tree for 
+upper parents
+    If you could locate these parents then use it to move to the child element 
+    (descendant syntax with space)
+
+XPATH is another way to locate elements but not used commonly with Cypress or Playwright
+Common to use with Selenium
+
+The only advantage it has over CSS is that XPATH moves
+

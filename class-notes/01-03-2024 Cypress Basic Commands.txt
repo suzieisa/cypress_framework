@@ -1,0 +1,45 @@
+01-03-2024 Cypress Basic Commands
+
+Cypress: is an automation tool help us to simulate human actions on a browser to test web application.
+It eliminates manual efforts of testing and makes testing processes faster and more reliable.
+
+Cypress - Playwright - Selenium and more.
+Selenium works with multiple languages (Java, JS, C#, and more)
+Selenium slowest.
+
+Cypress - supports JS and Mutliple browsers except Safari. 
+Playwright - supports TypeScript and all the browsers.
+
+
+Install: npm - node package manager
+we got lots of dependencies (library) installed in our project 
+
+
+cy.visit(url) // it navigates us to sepecified url
+
+Specs: 
+    describe - holds a group of tests (automated test cases)
+    it - single test in a group (describe)
+
+
+Flake - Flaky tests -> 
+
+
+NAMING THE SPECS 
+/e2e/**/*{spec_name}.cy.js
+
+EXPECTED:
+Title: TechGlobal Training | Home
+URL: https://techglobal-training.com/
+
+ACTUAL:
+cy.title()
+cy.url()
+
+
+Navigations:
+These helps us simulate the browser actions such as refresh, go back, go forward
+
+cy.reload() function refreshes the browser 
+cy.go('back') or cy.go(-1) functions navigates to back in the browser 
+cy.go('forward') or cy.go(1) functions navigates to forward in the browser 

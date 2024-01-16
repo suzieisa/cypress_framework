@@ -1,0 +1,97 @@
+01-10-2024 Cypress Actions
+
+-Cypress can do all the user actions available with Mouse and Keyboard
+
+Click - Right Click - Double Click - Drag and Drop - Move to (Hover) (Trigger) - Scroll - Click and Hold
+Type - Clear
+Use keyboard actions like ENTER, SHIFT, SPACE, CTRL 
+
+
+1. CLICK 
+
+TEST CASE:
+Go to https://techglobal-training.com/frontend/actions
+Validate that 'Click on me' button is visible 
+Validate that 'Click on me' button is enabled (clickable) 
+Validate that 'Click on me' button text 'Click on me'
+Click on 'Click on me' button
+Validate 'You clicked on a button!' paragraph is visible with it's text to be 'You clicked on a button!'
+
+
+2. Right-Click
+TEST CASE:
+Go to https://techglobal-training.com/frontend/actions
+Validate that 'Right-Click on me' button is visible 
+Validate that 'Right-Click on me' button is enabled (clickable) 
+Validate that 'Right-Click on me' button text 'Right-Click on me'
+Right-Click on 'Right-Click on me' button
+Validate 'You right-clicked on a button!' paragraph is visible with it's text to be 'You right-clicked on a button!'
+
+
+3. Double-Click
+TEST CASE:
+Go to https://techglobal-training.com/frontend/actions
+Validate that 'Double-Click on me' button is visible 
+Validate that 'Double-Click on me' button is enabled (clickable) 
+Validate that 'Double-Click on me' button text 'Double-Click on me'
+Double-Click on 'Double-Click on me' button
+Validate 'You double-clicked on a button!' paragraph is visible with it's text to be 'You double-clicked on a button!'
+
+
+4. Type 
+5. Clear 
+TEST CASE:
+Go to https://techglobal-training.com/frontend/actions
+Validate that 'Enter your message' input is visible 
+Validate that 'Enter your message' is enabled (textable) 
+Validate that 'Enter your message' input placeholder is 'Enter your message...'
+Enter 'Cypress' to 'Enter your message' input
+Validate that 'Enter your message' input value is 'Cypress'
+Clear the text from the 'Enter your message' input
+Validate that 'Enter your message' input value is empty
+
+
+
+TEST CASE:
+Go to https://techglobal-training.com/frontend/html-elements
+Validate that 'Enter text here' input is visible 
+Validate that 'Enter text here' is enabled (textable) 
+Validate that 'Enter text here' input placeholder is 'Enter text here'
+Enter 'Cypress' to 'Enter text here' input
+Validate that 'Enter text here' input value is 'Cypress'
+Clear the text from the 'Enter text here' input
+Validate that 'Enter text here' input value is empty
+
+Validate that 'Enter text below' input is visible 
+Validate that 'Enter text below' is enabled (textable) 
+Validate that 'Enter text below' input label is 'Enter text below'
+Enter 'Cypress' to 'Enter text below' input
+Validate that 'Enter text below' input value is 'Cypress'
+Clear the text from the 'Enter text below' input
+Validate that 'Enter text below' input value is empty
+
+
+
+VALIDATION OF INPUT AFTER TYPING
+2 WAYS
+cy.get('input').type('Hello').should('have.value', 'Hello')
+cy.get('input').type('Hello').should('have.attr', 'value', 'Hello')
+
+
+VALIDATION OF ANY ATTRIBUTE OF ANY ELEMENT 
+cy.get('selector').should('have.attr', 'attribute', 'attribute_value')
+
+
+
+6. Check 
+7. Uncheck
+These are used for input boxes that has type 'checkbox' or 'radio'
+check() can be used for both radio buttons and checkboxes
+uncheck() can only be used for checkboxes 
+
+
+8. Select 
+This command used to select an option from a dropdown created using <select> and <option> tags
+
+
+HOW TO VALIDATE ELEMENT IS NOT VISIBLE?

@@ -1,0 +1,210 @@
+01-06-2024 Cypress Selectors
+
+RECAP:
+
+Cypress is released in 2017
+Playwright is released in 2020
+
+Cypress: it is an automation tool-framework helping with Unit and Functional Testing (Smoke, Regression, E2E, Integration)
+Like all the other automation tools, it reduces human effort and cost (time-money) to companies. It also reduces human errors.
+
+
+Advantages:
+    -it is resistent to flaky tests (it handles synchronization issues implicitly)
+    -it handles asynchronous JS implicitly as well
+    -it is open source (?) and has a community support
+    -it has detailed documentation (cypress.io)
+    -it provides DashBoard (TestRunner) where you can see all the steps and their results
+    -it is faster compared to many other automation (because it runs directly in browser)
+    -cypress is more compatible with web application as they are all built using JS
+    -it can increase collaboration among testers and developers (especially frontend) as they all have good
+    knowledge of JS. 
+
+    cypress -> browser (faster)
+    selenium -> API -> browser (slower)
+
+
+    cy.get(elementSelector).click() // Cypress waits up to 4 seconds for element to be visible first
+    cy.get(elementSelector).type('johndoe@gmail.com')
+
+    
+
+Disadvantages: 
+    -working with JS only
+    -requires good knowledge of promises, asynchronous JS, comlex coding knowledge 
+    -parallel testing 
+    -does not support Safari
+
+
+CYPRESS BASIC COMMANDS 
+
+NOTE: CYPRESS COMMANDS DO NOT RETURN ANYTHING!!!
+
+MOCHA LIBRARY
+describe('Suite name', callback)    -> it helps us to store one or multiple tests 
+it('Test name', callback)           -> is a single test in a describe
+
+cy.visit('url')     -> it nagivates us to the spcified url
+cy.title()          -> it yields the title of the page
+cy.url()            -> it yileds the url of the page
+
+
+navigations commands 
+cy.reload()         -> refreshes the page
+cy.go(direction)    -> navigates us back or forward 
+cy.go('back) or cy.go('forward')
+cy.go(-1) or cy.go(1)
+
+
+CHAI
+assertions with cypress 
+.should(expected_behavior)      -> it validates expected with actual behavior
+
+should() and expect()
+
+
+CYPRESS IS A BUNDLE OF LIBRARIES: Cypress, Chai, Mocha, jQuery, Sinon 
+
+
+
+SELECTING OR LOCATING WEB ELEMENTS 
+Cypress Selectors (CSS Selectors) or Locators
+
+
+
+Web application is consist of multiple web pages. (15 web pages)
+Each web page is consist of many web elements. (Hundereds of web elements)
+WEB ELEMENT: Anything visible on a web page is a web element.
+
+Each element on a web page is created with a tag 
+Paragraph   -> p tag 
+Heading     -> h1, h2, h3, h4, h5, h6 tags 
+Image       -> img tag
+Link        -> a tag 
+Input box   -> input tag 
+ul, ol, li 
+form
+table, thead, tbody, tr, td, th    
+
+
+HTML TAG is consist of tag+attribute+attibute-value+visible text
+p {
+    font-family: arial
+}
+
+#greeting {
+    color: red
+}
+
+.p_a {
+    color: blue
+}
+
+NOT SELF-CLOSING TAG 
+
+<p id="greeting">Hello World</p>                          -> tag + visible text 
+<p class="p_a">Good morning</p>
+<a class="p_a">Link</a>
+
+<h1 data="anything">JS Language</h1>
+
+
+FORMULA 
+<tagName attribute1="value1" attribute2="value2">VISIBLE-TEXT</tagName>
+
+
+SELECTORS:
+1. tag
+2. Attributes
+3. Visible Text 
+4. Combination 
+5. Parent-child-sibling
+6. Psuedo classes 
+
+
+
+PARENT CHILD SIBLING RELATIONSHIP OF THE ELEMENTS
+<div id="container">
+    <button class="Button_c_button__TmkRS is-inline undefined" id="register_button" draggable="false">Register</button>
+    <button class="Button_c_button__TmkRS is-inline undefined" id="signin_button" draggable="false">Sign in</button>
+</div>
+
+
+IN THE ABOVE HTML SNIPPET 
+div is the parent of both button elements 
+buttons are child of div element 
+buttons are siblings to each other
+
+#container > button + button
+
+#container > button#register_button
+
+
+// locate all the paragraphs 
+cy.get('p')     2 elements 
+
+
+// query for - select - locate Hello World paragraph only
+cy.get('#greeting')     1 element 
+
+
+// query for - select - locate Good Morning paragraph only
+cy.get('.morning')      1 element
+
+cy.get('img') this one gets all the image elements
+
+
+
+SELF-CLOSING TAGS 
+<img attribute="value"/>
+
+
+TEST CASE:
+Go to https://techglobal-training.com/
+Go to https://techglobal-training.com/frontend
+Click on Logo
+Validate that the url is https://techglobal-training.com/
+
+Locating and clicking web element
+cy.get('selector').click()
+
+
+ID is always the first preference for querying elements
+    +UNIQUE
+    +FASTEST
+    +MOST RELIABLE
+
+
+
+<tag qa=""/>
+<tag qa=""></tag>
+
+
+
+TEST CASE: 
+Go to https://techglobal-training.com/frontend
+Click on "HTML Elements" card 
+Validate the heading1 of the page is "Html Elements"
+
+
+Validating a web element text
+cy.get(selector).should('have.text', 'expected_text')
+
+
+TEST CASE: 
+Go to https://techglobal-training.com/frontend
+Click on "HTML Elements" card 
+Validate the paragraph with "Hello World!" is displayed
+Validate the paragraph with "I like automation testing!" is displayed
+Validate the paragraph text is "Hello World!"
+Validate the paragraph text is "I like automation testing!"
+
+
+Validating a web element visibility
+cy.get(selector).should('be.visible')
+
+NOTE: You don't need to check this as Cypress does it internally (implicitly)
+
+
+Cypress Aliasing
+cy.get(selector).as('alias')

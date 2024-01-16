@@ -1,0 +1,68 @@
+- tagName
+
+    input
+    about
+    button
+- id
+#
+    
+
+- className
+.
+
+
+- attributes
+[attribute="attributeValue"]
+
+# Targeting Element using more properites
+    <button class ="button my-button-text" title="button_1" data-id="myButton">
+
+// can get element using both classes
+    .button.my-button-text
+
+// can also use the attribute [] // anything that isnt a class or an ID then you use []
+.button.my-button-text[title="button_1" ][data-id="myButton"]
+
+#Parent Child in CSS
+    
+<div class="container">
+    <button class ="button my-button-text" title="button_1" data-id="myButton">
+    <label class ="myLabel>
+        <input id="myId" type="textarea">MyText</input>
+    </label>
+ </div
+
+1. [id^="myId"]
+
+ #Target multiple elements
+  <label class="myLabel>
+    <input id="myID" type="textarea">MyText</input>
+    </label>
+    <a id="myId2" type="checkbox">MyText</a>
+
+
+#myId, #link_here
+
+1. starts with => [id^="myId"]
+2. ends-with => [id$="myId"]
+3. contains => [id*="myId"]
+
+# Targeting immediate siblings of siblings
+
++ => Targetrs immediate sibling element => must return 1
+
+~ => Targets multiple 
+
+
+
+#Pseudo classes
+:nth-child(3)
+:checked
+:active
+:selected
+:not(element you want to exclude)
+
+Cypress Slector 
+1.cy.get()
+2.cy.contains()
+3.cy.find()
