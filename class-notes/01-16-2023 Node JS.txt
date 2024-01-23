@@ -1,0 +1,97 @@
+
+RECAP
+
+	NodeJS:
+
+	NodeJS is a runtime environment. It's helping us to use JavaScript 
+	outside of the browser, which gives us an option to create backend 
+	applications using JavaScript.
+
+
+
+	npm:
+
+	It stands for Node Package Manager, helping us to install dependencies 
+	from the npm js. npm consists of 2 main parts:
+
+	- npmjs
+	- npm CLI
+
+	npmjs is online registry that contains JavaScrit libraries we may use in our Project
+
+	npm CLI is a command line, which provides us comands to to get dependencies from npmjs
+
+
+
+	npx:
+
+	It stands for Node Package Execute, it comes with npm, released with npm version 5.2.0. 
+	Helping us to run node packages without needing to download them. 
+	Also, if we have the package already that we want to run, it will run the binary 
+	file of related package.
+
+
+
+	package.json:
+
+	It's a JSON file, that contains metadata about the information. 
+	Like its name, version, description, and etc. We can store our scripts 
+	inside the package.json using 'scripts' object to easily run complex comments 
+	with the npm CLI. Also, our dependencies and their respective versions are 
+	centralized in this file.
+
+	COMMANDS:
+
+	npm install is the most used command in npm CLI, which helps us to get 
+	specific dependencies. 
+
+	If we run 'npm install' without any package name, it will install all the 
+	dependencies described in the package.json
+
+
+	npm run <script>
+	npm install <packageName>
+
+
+
+	npm install cypress@latest
+
+	npm install cypres@12.2.2
+	npm i cypress
+
+	npm install cypress --save-dev
+	npm install cypres -D
+
+	npm -i cypress -g
+
+
+	npm run <scriptName>
+
+
+
+
+	IFRAMES
+
+
+	What is iFrames ?
+
+		It's HTML document built in another HTML document. 
+		So its nested HTML documents. It's mostly used when we want to add another 
+		webpage content in our page without switching tabs, or also its widely used 
+		in adding adds into website.
+
+
+	How Cypress handles iFrames ?
+
+	1. We query the main <iframe> element
+	2. Chain it using .its() method from Cypress. This method gets the web element properties
+	3. We get the iframe body using its() method, with writing '0.contentDocument.body'
+
+		- 0					=> is the first element we targeted in cy.get(), which expected to be iframe
+		- contentDocument	=> This is specific property that only used with iframes, which well give access to iFrame document
+		- body 				=> the body of the iframe element.
+
+	4. then you can query any element you want inside the iframe using .find() method.
+
+	cy.get('iframe').its('0.contentDocument.body')
+	.find('#element').type('myText')

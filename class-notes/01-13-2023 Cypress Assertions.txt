@@ -1,0 +1,162 @@
+# CSS Selectors
+
+- tagName
+
+	input
+	a
+	button
+
+- id
+
+	#
+
+- className
+	
+	.
+
+- attributes
+
+	[attribute="attributeValue"]
+	[attribute="attributeValue"]
+
+
+# Targeting Element using more properties
+
+	<button class="button my-button-text" title="button_1" data-id="myButton">
+
+	button.button.my-button-text[title="button_1"][data-id="myButton"]
+
+# Parent Child in CSS
+
+		<div class='container'>
+			<button class="button my-button-text" title="button_1" data-id="myButton">
+			<label class="myLabel>
+				<input type="textarea">MyText</input>
+			</label>
+		</div>
+
+
+	(>) 	=> targets the immediate child
+
+	div > label > input
+
+	.container > .myLabel > input
+
+	div.container > label.myLabel > [type="textarea"]
+
+
+	(space) 	=> targets descendant child
+
+	div [type="textarea"]
+
+	# Target multiple elements
+
+			<label class="myLabel>
+				<input id="myId" type="textarea">MyText</input>
+			</label>
+			<a id="link_here" type="checkbox">MyText</a>
+
+	1. [id^='myId']
+
+	#myId, #link_here
+
+
+	1. starts with 	=> [id^='myId']
+	2. ends-with	=> [id$='myId']
+	3. contains 	=> [id*='myId']
+
+
+# Targeting immediate sibling or siblings
+
++	=> Targets immediate sibling element => must return 1
+
+~	=> Targets multiple siblings 		=> might return multiple
+
+#Pseudo-classes
+
+:nth-child(3)
+
+:visible
+
+:checked
+
+:active
+
+:selected
+
+:not(element you want to exclude)
+
+
+
+
+Cypress Selectors
+
+
+1. cy.get() 		=> It will works as regular css selector
+2. cy.contains()	=> Locates the web element by its visible text
+3. find()			=> 
+
+
+	DYNAMIC CONTENT
+
+
+
+
+
+	#Assertion Types in Cypress
+
+	1. Default Assertions:
+
+		Most of Cypress commands waits for element to be there by default for a certain or specified amount of time. When you query for an element, Cypress checks if element is there, and attached on the DOM. This check is called Default Assertion.
+
+	2. Implicit Assertions:
+
+		All assertion we do using should() is called implicit assertion. Implicit assertions are part of Cypress Wrapped object, which means they can be chained with another commands - or - assertions. Implicit assertions won't fail right away when the condition is not true. They try for condition to be true for a specified amount of time to make sure content is loading dynamically. This is called auto-try, or auto-retry.
+
+	3. Explicit Assertions:
+
+		Assertions we do using expect() method. This assertions does not have auto try logic, so they will right away when the condition is NOT true. This assertions  can't be used against Cypress objects.
+
+		cy.url
+		cy.get
+		cy.title
+		cy.contains
+
+		// Can't be used this way.
+		expect(cy.get(ele)).to.equal(cy.get(ele))
+
+
+
+
+		# .then() in Cypress.
+
+		then() in Cypress is a callback function. This function yields to it's previous subject, and it retrieve the the subject from its yielded command. Using then(), we can retrieve properties of a web element as a JavaScript object.
+
+		Syntax 1:
+
+		cy.get(#ele).invoke('text').then((el) => {
+			cy.log(el)
+		})
+
+			1. We query the element
+			2. Call invoke() function from the JQuery, and specify what do you want from the item.
+			3. Use .then() callback function, since we specified we want 'text' from the subject, it will come directly as JavaScript object.
+
+
+		Synax 2:
+
+		cy.get(#ele).then(($el) => {
+			cy.log($el.text())
+		})
+
+			1. We query the element
+			2. This time we don't use invoke, instead we use .then() callback function right away. When we do this,  the subject will not be retrieved as JavaScript object directly as when we used invoke.
+			3. $el will as JQuery object, then we must specify what we want from this object.
+			4. At this point, $el can be used with any JQuery methods, like text(), attributes, or css etc.
+
+
+
+
+		# .each() in Cypress.
+
+			It works exactly as .then(). But we use each() when the queried element returns more than 1 element. It works just like forEach() array method in JavaScript. When we use .each(), it will get each element as an array, and loop them through. Callback function can get two arguments; .then(ele, index)

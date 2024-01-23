@@ -1,0 +1,104 @@
+# Multiple Tabs
+
+	How we know, link opens in the new tab ?
+
+		- Should have target="_blank" attribute and value.
+
+	How can Cypress validate the targeted web element opens in the new tab ?
+
+		cy.get('#newTab').should('have.attr', 'target', '_blank')
+
+	How Cypress handles multiple tabs ?
+
+		Actually, it doesn't. But we have a workaround for it using JQuery.
+
+		Syntax:
+
+		cy.get('#newTab').invoke('remoteAttr', 'target').click()
+
+
+	# ALERTS / Dialogs
+
+	What are the types of Alerts ?
+
+		1. Warning Alert
+		2. Confirmation Alert
+		3. Prompt Alert
+
+
+	What object these alerts are belongs to ?
+
+		window object
+
+	How Cypress handles these Alerts ?
+
+		Cypress handles Warning and Confirmation alerts implicitly by pressing the OK. So, which means you don't have to do anything.
+
+		BUT, if you want to get the text of the alert, or press 'Cancel' on the confirmation, then we have to use event listeners ( page.on() ).
+
+		cy.on('window:alert', (str) => {
+			console.log(str)
+		})
+
+		cy.on('confirm:alert', (str) => {
+			console.log(str)
+
+			// if you want to press cancel
+			return false
+		})
+
+
+	Why Cypress doesn't handle the prompt alert ?
+
+		Because Cypress doesn't know what user input will be. That's why Cypress won't handle these prompt alerts, instead it gives user flexibility to handle these alerts.
+
+		Syntax:
+
+		cy.window().then((win) => {
+			cy.stub(win, 'prompt').returns('your prompt')
+		})
+
+
+		- Sinon Library -
+
+		What is stub method in Cypress ?
+
+		It replaces the original function with the fake version of it temporarly. When function is triggered from the window, it calles the fake version.
+
+		What is spy methon in Cypress ?
+
+		It allows you to observe the function behaviour.
+
+
+		What is the callsFake() method ?
+
+		You can say, its the callback function we use instead of .then()
+
+		cy.window().then((win) => {
+			cy.stub(win, 'prompt').callsFake((message) => {
+				console.log(message)
+			})
+		})
+
+		Parent commands 
+        - cy.get()
+        - cy.visit()
+        - cy.url()
+        - cy.title()
+        - cy.winow()
+        - cy.on()
+
+		Child Commands 
+		- .click()
+		- .type()
+		- .find()
+		- .should()
+		- .then()
+		- .each()
+		- .invoke 
+
+		Dual Commands
+		- cy.contains() / cy.get("#element).contains()
+		- cy.scrollTo() / cy.get(".sidebar).scrollTo()
+		- cy.screenshot()
+		

@@ -3,7 +3,7 @@
 describe("Assertions", () => {
   beforeEach(() => {
     // This will fail if the page doesn't send text/html with 200 status
-    cy.visit("https://techglobal-training.com/frontend/");
+    cy.visit(`${Cypress.env("SITE_URL")}/frontend`);
     cy.get(".cards").contains("Html Elements").click();
   });
   it("Default Assertions", () => {
@@ -252,7 +252,7 @@ describe("Assertions", () => {
    * 7. Validate value is changed to given dates.
    */
 
-  it.only("Practice", () => {
+  it("Practice", () => {
     // const dates = ["01/12/2024", "01/13/2024"];
 
     // cy.get('[data-identifier="Date Inputs"] input').each(($el, index) => {

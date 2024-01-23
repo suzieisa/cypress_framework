@@ -4,12 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx cypress run",
+    "test:all:headed": "npx cypress run --headed",
+    "test:chrome": "npx cypress run --browseer chrome",
+    "tests:specific": "npx cypress run --spec \"cypress/e2e/22-CustomCommands.cy.js\" --headed --browser chrome"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^13.6.2"
+    "@4tw/cypress-drag-drop": "^2.2.5",
+    "cypress": "^13.6.2",
+    "cypress-real-events": "^1.11.0",
+    "dotenv": "^16.3.1"
   }
 }

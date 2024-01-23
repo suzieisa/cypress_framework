@@ -13,14 +13,26 @@ describe("Form Element Project", () => {
     );
     cy.get("#email").should("have.text", "info@techglobalschool.com");
     cy.get("#phone-number").should("have.text", "(224) 580-2150");
+
+    // instead can do this, save as an alias and use next to get all siblings for addres, email, number 
+    cy.get(".is-size-3").as("header").should("have.text", "Contact Us");
+    const expectedTexts = [
+      "2860 S River Rd Suite 480, Des Plaines, IL 60018",
+      "info@techglobalschool.com",
+      "(224) 580-2150",
+    ];
+    cy.get("@header")
+      .nextAll()
+      .each((ele, index) => {
+        cy.wrap(ele).should("have.text", expectedTexts[index]);
+      });
   });
 
   it("Validate that the Full name input box", () => {
-    cy.get("form > :nth-child(1) > .control > .input");
-    cy.get("form > :nth-child(1) > .control > .input").should(
-      "have.attr",
-      "required"
-    );
+    cy.get("form > :nth-child(1) > .control > .input").should("be.visible")
+    .and("have.attr", "required").and("have.attr", "placeholder", "Enter your full name")
+
+  });
     cy.get("form > :nth-child(1) > .label").should("have.text", "Full name *");
     cy.get("form > :nth-child(1) > .control > .input").should(
       "have.attr",
@@ -39,7 +51,7 @@ describe("Form Element Project", () => {
       "required"
     );
     cy.get(".control > :nth-child(2)")
-      .should("be.visible")
+W`H3DMO Uk7@@@Sx vxt  `
       .and("have.text", "Male");
     cy.get(".control > :nth-child(3)")
       .should("be.visible")

@@ -1,0 +1,66 @@
+01-21-2024 Cypress Custom Commands - Configurations and CLI
+
+    # CYPRESS CUSTOM COMMANDS	
+
+
+    Parent Commands
+
+	    - cy.get()
+	    - cy.url()
+	    - cy.title()
+	    - cy.visit()
+	    - cy.window()
+	    - cy.on()
+
+
+	Child Commands
+
+		- .click()
+		- .type()
+		- .find()
+		- .should()
+		- .then()
+		- .each()
+		- .invoke()
+
+	Dual Commands
+
+		- cy.contains() / cy.get('#element').contains()
+		- cy.scrollTo() / cy.get('.sidebar').scrollTo('bottom')
+		- cy.screenshot() / cy.get('.post').screenshot()
+
+
+	Overwrite Custom Command:
+
+		This type of custom command overwrites the existing Cypress command and changes it behaviour permenantly. It's not a good practice to overwrite custom command after you build, and implemented a lot of tests in your Framework.
+
+
+
+
+
+
+
+	How many types of Custom Commands you know ?
+
+		1. Parent
+		2. Child
+		3. Dual
+		4. Overwrite
+
+
+
+	// cypress
+	      //e2e
+	          // **   => { ALL }
+	              // => *  => {ALL FILE NAMES} ends with {.cy.}   => js, jsx, ts, tsx
+
+
+	CLI
+
+	Stands for Command Line Interface
+
+
+	Jenkins ( CI/CD tool ) Continious Integration, and Continious Deployment
+
+
+	npm run:all:tests 
