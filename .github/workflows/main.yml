@@ -10,3 +10,9 @@ jobs:
       # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v6
+      # can specify the browser type and headless mode
+      with:
+        # browser: chrome
+        # headless: false
+        # spec: 
+        command: npm run test:chrome
