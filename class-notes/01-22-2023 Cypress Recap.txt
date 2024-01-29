@@ -1,0 +1,35 @@
+# Cypress CLI
+
+	What is the base command to run Cypress Test ?
+
+	npx cypress run
+
+	By default, runs the tests in Electron, and in headless. It will run all the tests you have inside inside the specPattern option in the config file.
+
+
+	What are the flags to run test in different configurations ?
+
+	* --headed					=> Runs the tests with visual browser.
+	* --browser <browserType>	=> It runs the test with specific browser you defined.
+	* --spec					=> Runs the specific test file.
+
+	* --config					=> Command to overwrite any configuration option inside cypress.config
+	* --env						=> Command to overwrite any option we have inside the env object in cypress.config
+
+
+
+	What was the benefit of using CLI over Cypress GUI
+
+		1. It has more flexibility to run our tests with different configurations
+		2. CI/CD (Continious Integration & Contnious Deployment) Virtual Machine that able to build, and run your program/framework
+
+			SOME CI/CD TOOLS
+
+				- Jenkins
+				- Spinnaker
+				- Circle CI
+
+            CI/CD tool will not understand or know how to use Cypress GUI (Cypress Runner)
+
+            That's why we need these CLI commands to run our tests over CLI. When we configure pipelines ( run confiurations )
+            for our tests, we can provide these CLI commands to tell Cypress how we want to run our tests. 

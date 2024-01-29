@@ -1,0 +1,169 @@
+
+
+What does POM stand for? 
+
+Page Object Model - Its a design in Sofwatre Programming
+    - Makes your test files readable
+    - Makes the maintenace easier
+
+What do we hold inside the POM?
+
+    Page specific locators and methods
+
+
+In cypress how we create POM?
+
+We create class and store locators and methods in that class
+For locators, we create methods using Cypress selectors and 
+return those selectores 
+
+    Syntax:
+    // MainPage.js
+
+    class MainPage {
+
+    getButton() {
+        return cy.get("#button")
+    }
+    }
+
+    export default Mainpage;
+
+// test-1.cy.js
+
+Have to import it to use; 
+import MainPage from "../pages/Mainpage.js"
+
+
+const mainPage = new MainPage () // creating a new instance here with new class
+it("test block1", () => {
+    mainPage.getButton().should("be.enabled")
+})
+it("test block2", () => {
+    mainPage.getButton().should("be.visible")
+})
+
+
+// so if your going to use it over and over you can put it in custom commands
+
+# Fixtures
+
+Fixtures is a place to store our static data to read and use it as test data in
+our Framework. We can read the data from JSON, csv, excel files. By implementing
+the fixture in our framework, we are getting the Data-driven concept in our framework
+
+In fixtures we can store all the test data types like expected texts, some input datas or
+some expected results 
+
+The file path of Fixture is by default defined in the config file in our tests directly using
+cy.fixture method. This method gets a single argument, which represents the name 
+of your file inside the fixtures folder
+
+The file path of Fixture is by default defined in the config file, which is fixturesFolder: 'cypress/fixtures'. 
+
+			We can access this values without importing these files in our tests directly using cy.fixture method. This method gets a single argument, which represents the name of your file inside the fixtures folder.
+
+			Syntax:
+
+			beforeEach(() => {
+				cy.fixture('example').then(function(data) {
+					this.username = data.username
+				})
+			})
+
+
+			it('test block1', function() {
+				cy.get('#username').type(this.username)
+			})
+Syntax: 
+beforeEach(() => {
+    cy.fixture("example").then(function(data)) {
+    this.username = data.username
+    })
+})
+cy.fixture# Frameworks
+
+			- TDD Test Driven Development Framework
+			- BDD Behaviour Driven Development Framework
+			- DDD Data Driven Development Framework
+
+			- KDT Key Driven Testing Framework
+
+			* Hybrid Testing Framework
+
+
+
+
+			Sprint Types
+
+			- 1 Week		:
+			- 2 Weeks 		: {
+								Devs and QA's works together in the same sprint, or QA follows the sprint 	one sprint behind.
+							  }
+
+			- 3 Weeks 		=> Devs works 2 weeks of sprint to develop the code, and they do code freeze and QA works rest of 1 week to write automation test cases.
+
+
+			Scenario One:
+
+			Sprint 1 : Devs works on the user stories (Story 1, 2, 3) and completed them.
+			Sprint 1 : Qa's wait for devs to complete their code, and try to automate the functionalities in the same sprint
+
+		    Sprint 2 : Devs works on the user stories (Story 4, 5, 6) and completed them.
+			Sprint 2 : Qa's wait for devs to complete their code, and try to automate the functionalities in the same sprint
+
+			Scenario Two(1 sprint behind):
+
+			Sprint 1 : Devs works on the user stories (Story 1, 2, 3) and completed them.
+			Sprint 1 : Qa's start writing test cases for these user stories, there is no automation.
+
+			Sprint 2 : Devs start working on new user stories of sprint 2 (Story 4, 5, 6)
+			Sprint 2 : Qa's start automation functionalities from Sprint 1 (Story 1, 2, 3)
+
+
+			Scenario Three(3 weeks sprint):
+
+			Sprint 1: In first two weeks of the sprint, Devs works on the user stories (Story 1, 2, 3) and completed them.
+			Sprint 1: Qa's start automation functionalities from Sprint 1 at the last week of the sprint. (Story 1, 2, 3)
+
+
+
+			Shift-left testing: Is a way to prepare your testing environemnt and framework before devs created their functionalities.
+
+
+			Gherkin Syntax:
+
+			Gherkin is a syntax is used to create test cases, and nowadays its mostly wide used technique to create test cases, because it makes the test case more readable.
+
+			Keywords:
+
+			Given 		=> Initial Step of the test case
+			When 		=> Pre-condition
+			Then 		=> Post-condition
+			And 		=> Can be used as continious condition after When and Then
+
+
+			Given the user is on https://techglobal-training.com/frontend/project-4
+			Then user expected to landed in the frontend page
+			When user clicks on the "Html Elements" card
+			Then user expected to navigate to "Html Elements" page
+			When user enters username field "TechGlobal"
+			And user enters password field "Test1234"
+			And user clicks on the login button
+			Then user must be navigated to user page
+			And user must see their username on the login page
+
+
+			BDD ( Behaviour-Driven Development Testing Framework )
+
+			BDD is a approach to create your framework in way that will help non-technical people to understand what going on. So it closes the technical gap between programmer and non-technical members ( like PO, BA, etc. )
+
+			How ?
+
+			Given('the user is on {string}', (url) => {
+				cy.visit(url)
+			})
+
+			Then('user expected to landed in the frontend page', () => {
+				cy.url().should('eq', 'techglobal')
+			})

@@ -12,13 +12,13 @@
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
 
-Cypress.Commands.add("clickCard", (link) => {
-  cy.get(".cards").contains(link).click();
-});
+Cypress.Commands.add('clickCard', (link) => {
+  cy.get('.cards').contains(link).click()
+})
 
-Cypress.Commands.add("dropDownValue", (selector, value) => {
-  cy.get(selector).select(value);
-});
+Cypress.Commands.add('dropDownValue', (selector, value) => {
+  cy.get(selector).select(value)
+})
 
 /**
  * Create a parent custom command called 'login'
@@ -55,10 +55,10 @@ Cypress.Commands.add('selectDropdownOption', (element, value) => {
  * Treat first input bar as username, and second unput bar ass pasword
  */
 
-Cypress.Commands.add("login", (username, password) => {
-  cy.get("#text_input1").type(username);
-  cy.get("#text_input2").type(password);
-});
+Cypress.Commands.add('login', (username, password) => {
+  cy.get('#text_input1').type(username)
+  cy.get('#text_input2').type(password)
+})
 
 /**
  * Create a parent custom command called have text
@@ -66,9 +66,9 @@ Cypress.Commands.add("login", (username, password) => {
  * And it will validate the targeted web element has expected text
  */
 
-Cypress.Commands.add("haveText2", (el, value) => {
-  cy.get(el).should("have.text", value);
-});
+Cypress.Commands.add('haveText2', (el, value) => {
+  cy.get(el).should('have.text', value)
+})
 
 //
 // -- This is a child command --
@@ -76,29 +76,29 @@ Cypress.Commands.add("haveText2", (el, value) => {
 //
 
 // Create the function that will log the text of the web element
-Cypress.Commands.add("logText", { prevSubject: true }, (subject) => {
-  const text = subject.text();
+Cypress.Commands.add('logText', { prevSubject: true }, (subject) => {
+  const text = subject.text()
 
-  cy.log(`My text is: ${text}`);
+  cy.log(`My text is: ${text}`)
 
-  return cy.wrap(subject);
-});
+  return cy.wrap(subject)
+})
 
-Cypress.Commands.add("haveText", { prevSubject: true }, (subject, value) => {
-  cy.wrap(subject).should("have.text", value);
-});
+Cypress.Commands.add('haveText', { prevSubject: true }, (subject, value) => {
+  cy.wrap(subject).should('have.text', value)
+})
 
 /**
  * Create a child custom command that will validate the attribute and the value of web element
  */
 
 Cypress.Commands.add(
-  "assertAttribute",
+  'assertAttribute',
   { prevSubject: true },
   (subject, attribute, value) => {
-    cy.wrap(subject).should("have.attr", attribute, value);
+    cy.wrap(subject).should('have.attr', attribute, value)
   }
-);
+)
 
 // -- This is a dual command --
 // Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })

@@ -1,0 +1,49 @@
+
+	# POM
+
+	Design Patterns
+
+		- Singleton Design Pattern
+		- Single Responsibility Design Pattern
+		***
+		- Page Object Design Pattern ( POM )
+		***
+
+
+
+		TechGlobal web Application
+
+				    PAGE 							CLASS
+
+			- HomePage					=> 		HomePagePage.js
+			- FrontEnd Page 			=> 		FrontendPage.js
+			- BackEnd Page 				=> 		BackendPage.js
+			- Mock Interivews page 		=> 		MockPage.js
+			- Exercises Page 			=> 		ExercisesPage.js
+			- Html Elements Page.       => 		HtmlElementsPage.js
+
+
+			With using POM, you will have single resource (js class) to store Page related Locators, and page related Methods. 
+
+			Scenario:
+
+			- Html Elements Page.       => 		HtmlElementsPage.js
+
+			#checkbox_1, lets say you used this web element in different tests so many times. Imagine in the feature, devs decided to change the locator from #checkbox_1 to #checkbox1. It will cause all your tests using this web element to fail. It means that, you have to investigate, and find all tests using this #checkbox_1, and replace it to #checkbox1 to be able to pass your tests.
+
+
+			How we can overcome this issue ?
+
+			This is where POM comes into play. Using POM, we can store our locators in JavaScript classes, and all the test cases that needs this locators can call the instances of this class, like your locator. It means from now on, you will store your #checkbox_1 in the single source, and all tests using this #checkbox_1 will call, and use this source. 
+
+			So, in the feature, if devs changes this locators #checkbox_1 to #checkbox1, you will just change the source, and all the tests using this locator will be reflected.
+
+
+			# Frameworks
+
+				- TDD Test Driven Development Framework
+				- BDD Behaviour Driven Development Framework
+				- DDD Data Driven Development Framework
+				- KDT Key Driven Testing Framework
+
+				* Hybrid Testing Framework

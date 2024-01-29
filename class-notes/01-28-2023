@@ -1,0 +1,24 @@
+CI/CD
+
+Continuous Integration (CI)
+This is a development practice where developers frequently merger their
+code changes into a central repository, typically multiple times a day.
+Each integration is automatically tested( BY unit tests and automated tests)
+to detetct integration errors as quickly as possible. This approach reduces the
+integration problems and allows a team to develop software more rapidly.
+
+Continuous Deployment/Delivery(CD)
+This practice extends the concept of Continuous Integration
+
+Continuous deployment is a process where after the code passes the
+automated tests in CI, it is automatically deployed to the production environment. This makes the deployment process entirely automated ensuring a faster and more consistent way
+of getting new features and updates to the customers.
+
+Continuous Delivery : its a slightly less aggressive approach where the deployment
+to production is done manually. The process up to deployment is automated. in continuous delivery the deployment is prepapred and validated through automation, but there is a final manual step to actually move the code into production
+
+-Jenkins
+-GitLab
+-CircleCI
+-Spinnaker
+-Travis CI
