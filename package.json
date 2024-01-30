@@ -9,19 +9,26 @@
     "test:chrome": "npx cypress run --browser chrome",
     "test:config": "npx cypress run --config viewportWidth=1280,viewportHeight=720 --headed",
     "test:specific": "npx cypress run --spec \"cypress/e2e/integration/22-Custom-Commands.cy.js\" --headed --browser chrome",
-    "test:smoke": "npx cypress run --env grepTags=@smoke,grepFilterSpecs=true"
+    "test:smoke": "npx cypress run --env grepTags=@smoke,grepFilterSpecs=true",
+    "test:dashboard": "npx cypress run --record --key fb757c60-fac2-4472-a3c8-789a130dc7f1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@4tw/cypress-drag-drop": "^2.2.5",
+    "@badeball/cypress-cucumber-preprocessor": "^20.0.1",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
     "@cypress/grep": "^4.0.1",
     "cypress": "^13.6.2",
     "cypress-mochawesome-reporter": "^3.8.1",
     "cypress-real-events": "^1.11.0",
     "dotenv": "^16.3.1",
     "eslint": "^8.56.0",
-    "eslint-plugin-cypress": "^2.15.1"
+    "eslint-plugin-cypress": "^2.15.1",
+    "ts-node": "^10.9.2"
+  },
+  "cypress-cucumber-preprocessor": {
+    "stepDefinitions": "cypress/e2e/step-definitions/*.js"
   }
 }

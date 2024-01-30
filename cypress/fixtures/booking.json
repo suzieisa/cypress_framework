@@ -1,5 +1,6 @@
 {
-  "cabinClassLabel": "Cabin Class",
-  "fromLabel": "From",
-  "toLabel": "To"
+  "labels":["Cabin Class", "From", "To", "Depart", "Return", "Number of passengers", "Passenger 1", "Passenger 2"], 
+  "labelsForOneWay":["Business", "Illinois", "Florida", "1", "Senior (65+)"],
+  "labelsForOnePassenger":["First", "California", "Illinois", "1", "Adult (16-64)"],
+  "labelsForTwoPassengers":["Premium Economy", "New York", "Texas", "2", "Adult (16-64)", "Child (2-11)"]
 }
